@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class TicTacToe {
@@ -14,5 +15,6 @@ public class TicTacToe {
         System.out.print("Enter a slot number (1-9): ");
         int slot = scanner.nextInt();
         return slot;
+
     }
 }
