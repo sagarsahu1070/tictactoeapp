@@ -1,3 +1,4 @@
+
 public class TicTacToe {
 
     public static void main(String[] args) {
@@ -16,5 +17,6 @@ public class TicTacToe {
         int col = (slot - 1) % 3;
 
         return new int[]{row, col};
+
     }
 }
