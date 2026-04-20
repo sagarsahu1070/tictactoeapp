@@ -1,22 +1,41 @@
 
 public class TicTacToe {
 
+    // 3x3 Board initialization
+    static char[][] board = {
+        {'-', '-', '-'},
+        {'-', '-', '-'},
+        {'-', '-', '-'}
+    };
+
     public static void main(String[] args) {
-        int slot = 7; // Example input
 
-        int[] position = convertSlotToPosition(slot);
-
-        System.out.println("Slot: " + slot);
-        System.out.println("Row: " + position[0]);
-        System.out.println("Column: " + position[1]);
+        // Test cases
+        System.out.println("Move (1,1): " + isValidMove(1, 1)); // true
+        board[1][1] = 'X'; // occupy cell
+        System.out.println("Move (1,1) again: " + isValidMove(1, 1)); // false
+        System.out.println("Move (3,3): " + isValidMove(3, 3)); // false (out of bounds)
     }
 
-    // UC4: Convert slot (1–9) to row & column (0–2)
-    public static int[] convertSlotToPosition(int slot) {
-        int row = (slot - 1) / 3;
-        int col = (slot - 1) % 3;
+    /**
+     * UC5: Validate move
+     * Checks:
+     * 1. Row and column are within bounds (0–2)
+     * 2. Cell is empty ('-')
+     */
+    static boolean isValidMove(int row, int col) {
 
-        return new int[]{row, col};
+        // Boundary check
+        if (row < 0 || row > 2 || col < 0 || col > 2) {
+            return false;
+        }
+
+        // Check if cell is empty
+        if (board[row][col] != '-') {
+            return false;
+        }
+
+        return true;
 
     }
 }
