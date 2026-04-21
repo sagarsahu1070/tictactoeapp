@@ -1,3 +1,4 @@
+
 public class TicTacToe {
 
     static char[][] board = new char[3][3];
@@ -19,5 +20,6 @@ public class TicTacToe {
 
     static void placeMove(int row, int col, char symbol) {
         board[row][col] = symbol;
+
     }
 }
