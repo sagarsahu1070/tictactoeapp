@@ -1,7 +1,7 @@
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
-public class TicTacToe {
+public class tictactoe {
 
     static char[][] board = {
         {' ', ' ', ' '},
@@ -11,7 +11,7 @@ public class TicTacToe {
 
     static Random random = new Random();
 
-    // Print Board
+    // Display Board
     public static void printBoard() {
         System.out.println();
         for (int i = 0; i < 3; i++) {
@@ -20,7 +20,7 @@ public class TicTacToe {
         }
     }
 
-    // Convert 1–9 to row & column
+    // Convert position (1–9) to row & column
     public static int[] convert(int pos) {
         return new int[]{(pos - 1) / 3, (pos - 1) % 3};
     }
@@ -35,21 +35,18 @@ public class TicTacToe {
 
     // UC9: Check Win
     public static boolean checkWin(char p) {
-
-        // Rows & Columns
         for (int i = 0; i < 3; i++) {
             if (board[i][0] == p && board[i][1] == p && board[i][2] == p) return true;
             if (board[0][i] == p && board[1][i] == p && board[2][i] == p) return true;
         }
 
-        // Diagonals
         if (board[0][0] == p && board[1][1] == p && board[2][2] == p) return true;
         if (board[0][2] == p && board[1][1] == p && board[2][0] == p) return true;
 
         return false;
     }
 
-    // Check Draw
+    // UC10: Draw Detection (using move count)
     public static boolean isDraw(int moves) {
         return moves == 9;
     }
@@ -57,7 +54,7 @@ public class TicTacToe {
     // UC7: Computer Random Move
     public static void computerMove() {
         while (true) {
-            int pos = random.nextInt(9) + 1; // 1–9
+            int pos = random.nextInt(9) + 1;
             int[] rc = convert(pos);
 
             if (placeMove(rc[0], rc[1], 'O')) {
@@ -67,7 +64,7 @@ public class TicTacToe {
         }
     }
 
-    // Main (UC8: Game Loop)
+    // UC8: Game Loop
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -80,7 +77,7 @@ public class TicTacToe {
 
             printBoard();
 
-            // Player Move
+            // Player Turn
             System.out.print("\nEnter position (1-9): ");
             int pos = sc.nextInt();
 
@@ -107,7 +104,7 @@ public class TicTacToe {
                 break;
             }
 
-            // Computer Move
+            // Computer Turn
             computerMove();
             moves++;
 
