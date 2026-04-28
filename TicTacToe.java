@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class TicTacToe {
+public class tictactoe {
 
     static char[][] board = {
         {' ', ' ', ' '},
